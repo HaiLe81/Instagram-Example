@@ -6,7 +6,8 @@ import { DataContext } from "../../../DataProvider/DataProvider";
 
 export default function Post(props) {
   const contex = useContext(DataContext);
-  const { item } = props;
+  const { item, index } = props;
+
   return (
     <div className="post">
       <article>
@@ -62,7 +63,7 @@ export default function Post(props) {
           <Carousel urls={item.imageUrls} />
         </div>
         <div className="p-comment">
-          <Comment item={item} />
+          <Comment index={index} />
         </div>
       </article>
     </div>

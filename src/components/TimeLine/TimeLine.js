@@ -11,7 +11,7 @@ export default function TimeLine() {
       <AddPost />
       {context.post &&
         context.post.map((item, index) => {
-          return <Post key={index} item={item} />;
+          return <Post key={index}  index={index} item={item} />;
         })}
       {/* <Post /> */}
     </div>

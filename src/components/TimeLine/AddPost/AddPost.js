@@ -9,8 +9,10 @@ export default function AddPost() {
 
   const [image, setImage] = useState("");
   const [caption, setCaption] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const upLoadImage = async (e) => {
+    setLoading(false)
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
@@ -21,6 +23,7 @@ export default function AddPost() {
     );
     const file = await res.json();
     setImage(file.secure_url);
+    setLoading(true)
   };
   const onChangeCaption = (e) => {
     setCaption(e.target.value);
@@ -48,7 +51,7 @@ export default function AddPost() {
           onChange={onChangeCaption}
         />
         <input
-          className="submit"
+          className={`submit ${loading ? "" : "disabled"}`}
           type="button"
           onClick={onSubmit}
           value="AddPost"

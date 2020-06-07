@@ -6,55 +6,72 @@ import {
   getDataComments,
   addLike,
 } from "../../../../services/comment";
+import { convertDateToTimeFromNow } from "../../../../utils/index";
 
 export default function Comment(props) {
-  const { item } = props;
+  const { index } = props;
   const contex = useContext(DataContext);
-  const countLiked = item.usersLiked.length;
+  const [post, setPost] = useState(contex.post[index]);
   const [valueComment, setValueComment] = useState({ comment: "" });
   const [comments, setComments] = useState([]);
-  const [liked, setLiked] = useState({ count: countLiked, status: false });
+  const [liked, setLiked] = useState({ count: 0});
+  const [likeStatus, setLikeStatus] = useState({ status: false })
+
   useEffect(() => {
-    getDataComments(item.postId).then((doc) => setComments(doc));
-  }, [item.postId]);
+    setPost(contex.post[index]);
+  }, [contex.post, index]);
+
+  useEffect(() => {
+    setLiked({ count: post.usersLiked.length });
+  }, [post.usersLiked.length]);
+
+  const time = convertDateToTimeFromNow(post.createdAt);
+  useEffect(() => {
+    getDataComments(post.postId).then((doc) => setComments(doc));
+  }, [post.postId]);
 
   useEffect(() => {
     // check liked
     // params postId, userId
     // had in listLiked => state: true
     // hadn't in listLiked => state: false
-    const result = item.usersLiked.find(
+    const result = post.usersLiked.find(
       (item) => item.userId === contex.user.id
     );
-    result ? setLiked({ status: true }) : setLiked({ status: false });
-  }, [contex.user.id, item.usersLiked]);
+    result ? setLikeStatus({ status: true }) : setLikeStatus({ status: false });
+  }, [contex.user.id, post.usersLiked]);
+
   const onLike = async () => {
     // params: userId postId, authorId
-    addLike(contex.user.id, item.postId, item.userId).then((doc) => {
+    addLike(contex.user.id, post.postId, post.userId).then((doc) => {
       if (doc.message !== "user liked") {
-        setLiked({ count: doc.post.usersLiked.length, status: true });
+        setLiked({ count: doc.post.usersLiked.length});
+        setLikeStatus({ status: true })
       }
     });
   };
+
   const onChange = (e) => {
     setValueComment({ comment: e.target.value });
   };
+
   const onSubmit = async () => {
-    const authorId = contex.actions.getUserNameById(item.userId);
+    const authorId = contex.actions.getUserNameById(post.userId);
     addComment(
-      item.postId,
+      post.postId,
       authorId,
       contex.user.id,
       valueComment.comment
     ).then((doc) => setComments(doc.comments));
     setValueComment({ comment: "" });
   };
+
   return (
     <div className="comment">
       <section className="t-action">
         <span className="fr66n">
           <button onClick={onLike} className="wpO6b" type="button">
-            {!liked.status && (
+            {!likeStatus.status && (
               <svg
                 aria-label="Thích"
                 className="_8-yf5 "
@@ -70,7 +87,7 @@ export default function Comment(props) {
                 />
               </svg>
             )}
-            {liked.status && (
+            {likeStatus.status && (
               <svg
                 aria-label="Bỏ thích"
                 className="_8-yf5 "
@@ -138,9 +155,9 @@ export default function Comment(props) {
       <div className="l-comments">
         <div className="l-comment">
           <a href="/" title="username">
-            {contex.actions.getUserNameById(item.userId)}
+            {contex.actions.getUserNameById(post.userId)}
           </a>{" "}
-          <span className="caption">{item.caption}</span>
+          <span className="caption">{post.caption}</span>
         </div>
         {comments &&
           comments.map((item, index) => (
@@ -153,7 +170,7 @@ export default function Comment(props) {
           ))}
       </div>
       <div className="timePost">
-        <a href="/">4 GiỜ TRƯỚC</a>
+        <a href="/">{time}</a>
       </div>
       <section className="addComment">
         <div>
