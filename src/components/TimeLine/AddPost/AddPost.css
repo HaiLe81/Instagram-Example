@@ -1,0 +1,33 @@
+.AddPost {
+  background: rgba(var(--d87, 255, 255, 255), 1);
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.AddPost .title {
+  padding: 10px 10px 5px 10px;
+  border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  color: black;
+}
+.AddPost .b-addpost {
+  padding: 10px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.AddPost .b-addpost .submit {
+  background: rgba(var(--d87, 255, 255, 255), 1);
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  border-radius: 3px;
+  height: 28px;
+}
+.AddPost .b-addpost .chooseImage {
+  width: 80px;
+}
+.AddPost .b-addpost .inputCaption {
+  padding-left: 20px;
+  flex-grow: 1;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  height: 28px;
+}

@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap");
+
+.u-wrapper {
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.u-wrapper-row {
+  display: flex;
+  flex-direction: row;
+}
+.u-avatar {
+  height: 56px;
+  width: 56px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+.u-avatar img {
+  height: 100%;
+  width: 100%;
+}
+.u-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif !important;
+}
+.u-info a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+}
+.u-info .name {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8e8e8e;
+}

@@ -1,0 +1,51 @@
+.sign-in-page {
+    width: 100vw;
+    height: 100vh;
+    background: #fafafa !important;
+  }
+  .sign-in-page .card {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    width: 350px;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .sign-in-page .card:last-child {
+    height: 70px;
+  }
+  
+  .card .title {
+    background-image: url(../../../assets/images/logo_transparent.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 22px auto 12px;
+  }
+  
+  .sign-in-form {
+    padding: 20px 40px 10px;
+  }
+  
+  .sign-in-form .form-input {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  .sign-in-form .form-button {
+    border-radius: 4px;
+    height: 35px;
+    width: 100%;
+    font-weight: 600;
+  }
+  .sign-in-form .forgot-link {
+    font-size: 12px;
+    margin-top: 12px;
+    text-align: center;
+    color: #00376b;
+  }

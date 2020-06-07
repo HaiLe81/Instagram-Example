@@ -1,0 +1,74 @@
+.profile {
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+  margin: 0;
+  padding: 0;
+  display: flex !important;
+  justify-content: center;
+  position: absolute;
+  top: 54px;
+  right: 0;
+  left: 0;
+  height: 100vh;
+}
+.profile header {
+  display: flex;
+  flex-direction: row;
+  max-width: 975px;
+  width: 100%;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.profile header {
+  display: flex;
+  flex-direction: row;
+}
+.profile .p-avatar {
+  margin-right: 30px;
+  flex-grow: 1;
+  max-width: 300px;
+}
+.profile .p-avatar .w-avatart {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 150px;
+  width: 150px;
+}
+.profile .p-avatar img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.profile .info {
+  flex-grow: 1;
+}
+.profile .info .info-row-1 {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.info-row-1 h4 {
+  margin: 0;
+}
+.info-row-1 a {
+  margin-left: 5px;
+}
+.info-row-1 .logout {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.info-row-1 .logout img {
+  height: 20px;
+  width: 20px;
+}
+.info-row-1 .edit-info button {
+  background: none;
+  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+  color: rgba(var(--f75, 38, 38, 38), 1);
+  border-radius: 4px;
+  padding: 5px 9px;
+  font-size: 11px !important;
+  font-weight: 600;
+}

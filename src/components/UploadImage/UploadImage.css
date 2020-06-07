@@ -1,0 +1,8 @@
+.custom-file img {
+  position: absolute;
+  top: 0px;
+  right: 100px;
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
+}

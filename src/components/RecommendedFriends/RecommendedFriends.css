@@ -1,0 +1,31 @@
+.r-wrapper {
+  margin-left: -8px;
+}
+.RecFriends a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+.RecFriends p {
+  font-weight: 600;
+  color: #999999;
+  margin: 0;
+  font-size: 16px;
+}
+.RecFriends {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+.RecFriends .title:nth-child(1) {
+  flex-grow: 1;
+  text-align: start;
+  font-size: 14px;
+}
+.RecFriends .title:nth-child(2) {
+  /* flex-grow: 1; */
+  text-align: end;
+  font-size: 12px;
+  font-weight: 600;
+}

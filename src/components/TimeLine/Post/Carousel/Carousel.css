@@ -1,0 +1,46 @@
+.container .z-depth-1 {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, -8) !important;
+}
+.carousel .carousel-control-next-icon {
+  height: 40px !important;
+  width: 40px !important;
+  background: url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png)
+    no-repeat -232px -226px !important;
+}
+.carousel .carousel-control-prev-icon {
+  height: 40px !important;
+  width: 40px !important;
+  background: url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png)
+    no-repeat -185px -226px !important;
+}
+.t-action {
+  padding: 0 16px;
+}
+.t-action button {
+  background: none !important;
+  border: none !important;
+  height: 40px;
+  width: 40px;
+}
+.t-action .wmtNn {
+  float: right;
+}
+.carousel-indicators {
+  bottom: -30px !important;
+  left: 35px !important;
+  margin-bottom: 0 !important;
+}
+.carousel .carousel-indicators li {
+  background: rgba(var(--ba8, 168, 168, 168), 1) !important;
+  width: 5px !important;
+  height: 0.1rem !important;
+}
+.carousel .carousel-indicators .active {
+  background-color: rgba(var(--d69, 0, 149, 246), 1) !important;
+}
+.carousel-item img {
+  height: 500px !important;
+  width: 450px !important;
+  object-fit: none;
+  margin: 0 auto !important;
+}
