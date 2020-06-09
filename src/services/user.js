@@ -1,8 +1,11 @@
 export const getUserById = async (userId) => {
+  const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
   const url = `${process.env.REACT_APP_URL}/account/${userId}`;
   const requestOptions = {
     method: "GET",
     headers: new Headers({
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     }),
     // body: JSON.stringify(data)
@@ -19,6 +22,7 @@ export const getUsers = async () => {
   const requestOptions = {
     method: "GET",
     headers: new Headers({
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     }),
     // body: JSON.stringify(data)

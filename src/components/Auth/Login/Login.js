@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../../../DataProvider/DataProvider";
 import { useRouter } from "../../../hooks/useRouter";
 import { login } from "../../../services/auth";
+import { CookieService } from "../../../services/storage"
 
 export default function Login(props) {
   const context = useContext(DataContext);
@@ -34,9 +35,11 @@ export default function Login(props) {
       .then((res) => {
         setLoading(false);
         if (res.message === "You have successfully logged in") {
+          const { user, token } = res;
           context.setLoggedIn(true);
-          context.setUser(res.user);
-
+          context.setUser(user);
+          CookieService.setCookie(process.env.REACT_APP_COOKIE_KEY, token)
+          context.setInitLoading(false)
           message.success(res.message);
           let to = "/";
           if (router.state && router.state.from) {

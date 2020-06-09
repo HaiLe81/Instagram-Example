@@ -1,8 +1,13 @@
+import { getCookie } from "../services/storage";
+
 export const getFollows = async (userId) => {
+  const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
   const url = `${process.env.REACT_APP_URL}/suggestions/${userId}`;
   const requestOptions = {
     method: "GET",
     headers: new Headers({
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     }),
     // body: JSON.stringify(data)
@@ -15,12 +20,14 @@ export const getFollows = async (userId) => {
 };
 
 export const follow = async (userId, followUserId) => {
+  const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
   const url = `${process.env.REACT_APP_URL}/follow`;
   const data = { userId, followUserId };
   const requestOptions = {
     method: "PATCH",
     headers: new Headers({
-      // Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     }),
     body: JSON.stringify(data),

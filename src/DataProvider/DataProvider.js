@@ -1,4 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
+import { decode } from "jsonwebtoken";
+import { getCookie } from "../services/storage";
 
 const DataContext = createContext(null);
 const DataProvider = (props) => {
@@ -7,24 +9,38 @@ const DataProvider = (props) => {
     username: "",
     fullname: "",
     email: "",
-    password: "",
+    urlAvatar: "",
   });
   const [post, setPost] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(null);
+  const [initloading, setInitLoading] = useState(true)
+
+  useEffect(() => {
+    // get token
+    const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+    if (token) {
+      const user = decode(token);
+      setUser(user);
+      setLoggedIn(true);
+      setToken(token)
+      setInitLoading(false)
+    }
+  }, []);
 
   useEffect(() => {
     if (loggedIn) {
       async function fecthAccounts() {
+        const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
         const url = `${process.env.REACT_APP_URL}/accounts`;
-        // const data = { id: user.id };
         const requestOptions = {
           method: "GET",
           headers: new Headers({
-            // Accept: "application/json",
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           }),
-          // body: JSON.stringify(data)
         };
         const result = await fetch(url, requestOptions)
           .then((res) => res.json())
@@ -39,12 +55,14 @@ const DataProvider = (props) => {
   useEffect(() => {
     async function fetchData() {
       if (user.id) {
+        const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
         const url = `${process.env.REACT_APP_URL}/timeline/${user.id}`;
         // const data = { id: user.id };
         const requestOptions = {
           method: "GET",
           headers: new Headers({
-            // Accept: "application/json",
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           }),
           // body: JSON.stringify(data)
@@ -86,12 +104,15 @@ const DataProvider = (props) => {
   return (
     <DataContext.Provider
       value={{
+        token,
         user,
         post,
         accounts,
         loggedIn,
         setUser,
         setLoggedIn,
+        initloading,
+        setInitLoading,
         actions: {
           getUserNameById,
           setPost,

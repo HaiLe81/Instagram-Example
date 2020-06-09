@@ -1,4 +1,8 @@
+import { getCookie } from "../services/storage";
+
 export const addComment = async (postId, authorId, userId, content) => {
+  const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
   const data = {
     postId: postId,
     authorId: authorId,
@@ -9,7 +13,7 @@ export const addComment = async (postId, authorId, userId, content) => {
   const requestOptions = {
     method: "POST",
     headers: new Headers({
-      // Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     }),
     body: JSON.stringify(data),
@@ -22,11 +26,13 @@ export const addComment = async (postId, authorId, userId, content) => {
 };
 
 export const getDataComments = async (postId) => {
+  const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
   const url = `${process.env.REACT_APP_URL}/comments/${postId}`;
   const result = await fetch(url, {
     method: "GET",
     headers: new Headers({
-      // Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     }),
   })
@@ -37,6 +43,8 @@ export const getDataComments = async (postId) => {
 };
 
 export const addLike = async (userId, postId, authorId) => {
+  const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
   const url = `${process.env.REACT_APP_URL}/like`;
   const data = {
     userId: userId,
@@ -46,7 +54,7 @@ export const addLike = async (userId, postId, authorId) => {
   const requestOptions = {
     method: "POST",
     headers: new Headers({
-      // Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     }),
     body: JSON.stringify(data),

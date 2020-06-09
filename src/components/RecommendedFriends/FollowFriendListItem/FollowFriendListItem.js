@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./FollowFriendListItem.css";
 import { DataContext } from "../../../DataProvider/DataProvider";
 import { follow } from "../../../services/suggestionFollow";
+import { defaultConfig } from "../../../configs/index";
 
 export default function FollowFriendListItem(props) {
   const context = useContext(DataContext);
@@ -20,7 +21,7 @@ export default function FollowFriendListItem(props) {
           src={`${
             item.urlAvatar
               ? item.urlAvatar
-              : "https://res.cloudinary.com/hai-le/image/upload/v1587742445/f0r4icmw177mhyfrg9tx.png"
+              : defaultConfig.urlAvatar
           }`}
           alt="not found"
         />

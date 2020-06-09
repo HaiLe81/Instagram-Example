@@ -1,10 +1,14 @@
+import { getCookie } from "../services/storage";
+
 export const uploadImage = async (id, urlImage) => {
+  const token = getCookie(process.env.REACT_APP_COOKIE_KEY);
+
   const data = { url: urlImage };
   const url = `${process.env.REACT_APP_URL}/avatar/${id}`;
   const requestOptions = {
     method: "PATCH",
     headers: new Headers({
-      // Accept: "application/json",
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(data)
