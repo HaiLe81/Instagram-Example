@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "antd": "4.2.2",
-    "axios": "0.19.2",
+    "axios": "0.21.1",
     "bootstrap": "4.4.1",
     "env-cmd": "^10.1.0",
     "jquery": "3.5.1",
